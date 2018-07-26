@@ -29,7 +29,8 @@ mkdir -p $output_dir
 mkdir -p $temp_app_dir
 
 echo "Downloading libvips and unpacking" | indent
-curl -s https://s3-eu-west-1.amazonaws.com/visup-misc/heroku-buildpack-vips/201503311000.tar.gz | tar xz -C $output_dir
+#curl -s https://s3-eu-west-1.amazonaws.com/visup-misc/heroku-buildpack-vips/201503311000.tar.gz | tar xz -C $output_dir
+curl -s https://influenceroom.s3.amazonaws.com/uploads/output.tar.gz | tar xz -C $output_dir
 
 if [ $? != 0 ]; then
   echo "Error downloading vips and unpacking to build dir" | indent
@@ -46,8 +47,6 @@ mkdir -p $BUILD_DIR/bin/
 cp -r $output_dir/bin/* $BUILD_DIR/bin/
 
 echo "libvips installed" | indent
-
-ldconfig
 
 #echo "Creating new env var in $3" | indent
 
